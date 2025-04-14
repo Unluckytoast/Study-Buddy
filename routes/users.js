@@ -3,8 +3,6 @@ const router = express.Router();
 const db = require('../db/database');
 const authenticateToken = require('../middleware/authMiddleware');
 const bcrypt = require('bcrypt');
-
-// Protect all routes
 router.use(authenticateToken);
 
 // CREATE NEW USER
@@ -24,7 +22,7 @@ router.get('/', (req, res) => {
   });
 });
 
-// GET USER BY ID (Include Password)
+// GET USER BY ID 
 router.get('/:id', (req, res) => {
   const userId = req.params.id;
   db.get(`SELECT id, name, email, password FROM users WHERE id = ?`, [userId], (err, row) => {
@@ -34,11 +32,10 @@ router.get('/:id', (req, res) => {
   });
 });
 
-// UPDATE USER USING ID (Include Password)
+// UPDATE USER USING ID
 router.put('/:id', async (req, res) => {
   const { name, email, password } = req.body;
 
-  // Hash the password if provided
   let hashedPassword = null;
   if (password) {
     hashedPassword = await bcrypt.hash(password, 10);
