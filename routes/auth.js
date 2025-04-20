@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const db = require('../db/database');
-
+const authenticateToken = require('../middleware/authMiddleware'); 
 const router = express.Router();
 const SECRET_KEY = 'secret_key'; 
 
@@ -49,6 +49,18 @@ router.post('/login', (req, res) => {
     });
     res.json({ token });
   });
+});
+
+// Get the authenticated user's data
+router.get('/me', authenticateToken, (req, res) => {
+  const { id, email } = req.user;
+  res.json({ id, email }); 
+});
+
+// User Logout (Optional, since JWT is stateless, we just delete the token on the client)
+router.post('/logout', (req, res) => {
+ 
+  res.sendStatus(200); 
 });
 
 module.exports = router;
