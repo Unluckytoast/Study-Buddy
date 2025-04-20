@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
 const db = require('./db/database');
 
@@ -11,6 +12,10 @@ const chatRoutes = require('./routes/chat');
 const flashcardRoutes = require('./routes/flashcards');
 
 app.use(bodyParser.json());
+app.use(cors({
+  origin: 'http://localhost:5173', // frontend origin
+  credentials: true,               // if you're using cookies/sessions
+}));
 app.use('/api/users', userRoutes);
 app.use('/api/groups', groupRoutes);
 app.use('/api/members', memberRoutes);
