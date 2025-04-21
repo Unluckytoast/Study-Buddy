@@ -13,8 +13,8 @@ const flashcardRoutes = require('./routes/flashcards');
 
 app.use(bodyParser.json());
 app.use(cors({
-  origin: 'http://localhost:5173', // frontend origin
-  credentials: true,               // if you're using cookies/sessions
+  origin: 'http://localhost:5173', 
+  credentials: true,              
 }));
 app.use('/api/users', userRoutes);
 app.use('/api/groups', groupRoutes);
