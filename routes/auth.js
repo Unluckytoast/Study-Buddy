@@ -1,3 +1,4 @@
+
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -47,7 +48,7 @@ router.post('/login', (req, res) => {
     const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY, {
       expiresIn: '1h',
     });
-    res.json({ token });
+    res.json({ token, user });  
   });
 });
 
