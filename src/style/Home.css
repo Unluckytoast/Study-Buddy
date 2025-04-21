@@ -1,0 +1,51 @@
+/* src/pages/Home.css */
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f0f2f5;
+  padding: 2rem;
+}
+
+.home-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.home-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  color: #333;
+}
+
+.btn {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: #fff;
+}
+
+.btn-logout {
+  background: #dc3545;
+  color: #fff;
+}
